@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Form - Mock</title>
+<style>
+    /* Add your CSS styles here */
+</style>
+</head>
+<body>
+<h2>Google Form - Mock</h2>
+<form id="quizForm">
+    <p>Question 1: What is the capital of France?</p>
+     <label>
+        <input type="checkbox" name="question1" value="option1" data-mark="0"> Option 1 0
+    </label><br>
+    <label>
+        <input type="checkbox" name="question1" value="option2" data-mark="3"> Option 2 (3 Marks)
+    </label><br>
+    <label>
+        <input type="checkbox" name="question1" value="option3" data-mark="2"> Option 3 (2 Marks)
+    </label><br>
+    <label>
+        <input type="checkbox" name="question1" value="option4" data-mark="2"> Option 4 (2 Marks)
+    </label><br>
+    
+    <p>Question 2: What is the largest planet in our solar system?</p>
+     <label>
+        <input type="checkbox" name="question2" value="option1" data-mark="0"> Option 1 0
+    </label><br>
+    <label>
+        <input type="checkbox" name="question2" value="option2" data-mark="3"> Option 2 (3 Marks)
+    </label><br>
+    <label>
+        <input type="checkbox" name="question2" value="option3" data-mark="2"> Option 3 (2 Marks)
+    </label><br>
+    <label>
+        <input type="checkbox" name="question2" value="option4" data-mark="2"> Option 4 (2 Marks)
+    </label><br>
+</form>
+<br>
+<div id="totalMarks"></div>
+
+<script>
+function calculateTotalMarks() {
+    var totalMarks = 0;
+    var options = document.querySelectorAll('input[type="checkbox"]:checked');
+
+    options.forEach(function(option) {
+        totalMarks += parseInt(option.dataset.mark);
+    });
+
+    document.getElementById('totalMarks').innerText = "Total Marks: " + totalMarks;
+}
+
+// Attach event listeners to all radio buttons to recalculate marks when selection changes
+var radioButtons = document.querySelectorAll('input[type="checkbox"]');
+radioButtons.forEach(function(radioButton) {
+    radioButton.addEventListener('change', calculateTotalMarks);
+});
+
+// Initial calculation of total marks
+calculateTotalMarks();
+</script>
+</body>
+</html>
